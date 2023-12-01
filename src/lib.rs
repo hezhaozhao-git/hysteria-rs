@@ -4,9 +4,6 @@ mod ffi;
 
 pub fn start_from_json(json: &str) {
     let json_cstr = CString::new(json).expect("CString::new failed");
-    println!("json_cstr: {:?}", json_cstr);
-    let cc = json_cstr.as_bytes();
-
     unsafe {
         ffi::startClientFromJSON(json_cstr.as_ptr());
     }
